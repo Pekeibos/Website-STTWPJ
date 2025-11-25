@@ -445,10 +445,26 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
             <div>
               <h4 className="font-serif font-bold text-lg mb-6 border-b border-blue-700 dark:border-gray-800 pb-2 inline-block">Program Studi</h4>
               <ul className="space-y-3 text-sm text-gray-300">
-                <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 bg-accent rounded-full"></div> S1 Teologi (S.Th)</li>
-                <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 bg-accent rounded-full"></div> S1 Pendidikan Agama Kristen</li>
-                <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 bg-accent rounded-full"></div> S2 Magister Teologi</li>
-                <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 bg-accent rounded-full"></div> S2 Magister PAK</li>
+                <li>
+                  <Link to="/program-studi/s1-teologi" className="flex items-center gap-2 hover:text-accent transition-colors">
+                    <div className="w-1.5 h-1.5 bg-accent rounded-full"></div> S1 Teologi (S.Th)
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/program-studi/s1-pak" className="flex items-center gap-2 hover:text-accent transition-colors">
+                    <div className="w-1.5 h-1.5 bg-accent rounded-full"></div> S1 Pendidikan Agama Kristen
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/program-studi/s2-teologi" className="flex items-center gap-2 hover:text-accent transition-colors">
+                    <div className="w-1.5 h-1.5 bg-accent rounded-full"></div> S2 Magister Teologi
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/program-studi/s2-pak" className="flex items-center gap-2 hover:text-accent transition-colors">
+                    <div className="w-1.5 h-1.5 bg-accent rounded-full"></div> S2 Magister PAK
+                  </Link>
+                </li>
               </ul>
             </div>
 
