@@ -20,6 +20,7 @@ import { AcademicFacilities } from './pages/AcademicFacilities';
 
 // Dosen Pages
 import { LecturersList } from './pages/LecturersList';
+import { LecturerDetail } from './pages/LecturerDetail'; // Imported Detail Page
 import { StaffList } from './pages/StaffList';
 
 // Alumni & Mahasiswa Pages
@@ -63,6 +64,7 @@ function App() {
 
           {/* Dosen Routes */}
           <Route path="/dosen/pendidik" element={<LecturersList />} />
+          <Route path="/dosen/:id" element={<LecturerDetail />} /> {/* New Route */}
           <Route path="/dosen/staf" element={<StaffList />} />
 
           {/* Alumni & Mahasiswa Routes */}

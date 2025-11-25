@@ -9,9 +9,17 @@ export interface NavItem {
 export interface FacultyMember {
   id: number;
   name: string;
-  title: string;
+  role: string; // Jabatan Struktural
+  title: string; // Gelar Akademik
+  expertise: string;
+  prodi: string; // Program Studi Homebase
   image: string;
-  role: string;
+  email: string;
+  linkedin: string;
+  biography?: string;
+  education?: string[];
+  publications?: string[];
+  courses?: string[];
 }
 
 export interface NewsItem {
