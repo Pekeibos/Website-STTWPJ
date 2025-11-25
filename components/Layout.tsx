@@ -14,6 +14,7 @@ const navItems: NavItem[] = [
       { label: 'Nilai-Nilai', path: '/profil/nilai' },
       { label: 'Akreditasi', path: '/profil/akreditasi' },
       { label: 'Struktur Organisasi', path: '/profil/struktur' },
+      { label: 'Galeri Multimedia', path: '/profil/galeri' },
     ]
   },
   { 

@@ -10,6 +10,7 @@ import { ProfileVision } from './pages/ProfileVision';
 import { ProfileValues } from './pages/ProfileValues';
 import { ProfileAccreditation } from './pages/ProfileAccreditation';
 import { ProfileStructure } from './pages/ProfileStructure';
+import { Gallery } from './pages/Gallery'; // New Import
 
 // Prodi Pages
 import { ProdiS1Teologi } from './pages/ProdiS1Teologi';
@@ -20,7 +21,7 @@ import { AcademicFacilities } from './pages/AcademicFacilities';
 
 // Dosen Pages
 import { LecturersList } from './pages/LecturersList';
-import { LecturerDetail } from './pages/LecturerDetail'; // Imported Detail Page
+import { LecturerDetail } from './pages/LecturerDetail';
 import { StaffList } from './pages/StaffList';
 
 // Alumni & Mahasiswa Pages
@@ -54,6 +55,7 @@ function App() {
           <Route path="/profil/nilai" element={<ProfileValues />} />
           <Route path="/profil/akreditasi" element={<ProfileAccreditation />} />
           <Route path="/profil/struktur" element={<ProfileStructure />} />
+          <Route path="/profil/galeri" element={<Gallery />} /> {/* New Route */}
 
           {/* Program Studi Routes */}
           <Route path="/program-studi/s1-teologi" element={<ProdiS1Teologi />} />
@@ -64,7 +66,7 @@ function App() {
 
           {/* Dosen Routes */}
           <Route path="/dosen/pendidik" element={<LecturersList />} />
-          <Route path="/dosen/:id" element={<LecturerDetail />} /> {/* New Route */}
+          <Route path="/dosen/:id" element={<LecturerDetail />} />
           <Route path="/dosen/staf" element={<StaffList />} />
 
           {/* Alumni & Mahasiswa Routes */}
