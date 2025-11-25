@@ -64,15 +64,16 @@ export const NewsList: React.FC = () => {
       <Section>
         {/* Filter Section */}
         <div className="flex flex-col md:flex-row justify-center items-center gap-4 mb-12">
-            <div className="flex items-center gap-2 text-gray-600 font-bold mr-2">
+            <div className="flex items-center gap-2 text-gray-600 font-bold mr-2 mb-2 md:mb-0">
                 <Filter size={20} /> Filter Kategori:
             </div>
-            <div className="flex flex-wrap justify-center gap-2">
+            {/* Scrollable container for mobile responsiveness */}
+            <div className="flex overflow-x-auto pb-2 md:pb-0 gap-2 md:flex-wrap md:justify-center w-full md:w-auto px-4 md:px-0 -mx-4 md:mx-0 scrollbar-hide">
                 {categories.map((cat) => (
                     <button
                         key={cat}
                         onClick={() => setActiveCategory(cat)}
-                        className={`px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 ${
+                        className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 flex-shrink-0 ${
                             activeCategory === cat 
                             ? "bg-primary text-white shadow-md transform scale-105" 
                             : "bg-gray-100 text-gray-600 hover:bg-gray-200"

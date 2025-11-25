@@ -1,16 +1,80 @@
 import React from 'react';
-import { Section, SectionTitle } from '../components/UI';
+import { Section } from '../components/UI';
 import { Mail, Linkedin } from 'lucide-react';
 
 const lecturers = [
-  { id: 1, name: "Pdt. Dr. Yance Kogoya, M.Th", role: "Ketua STT", expertise: "Teologi Sistematika", image: "https://picsum.photos/seed/lecturer1/400/400" },
-  { id: 2, name: "Dr. Sarah Wenda, M.Pd.K", role: "Wakil Ketua I", expertise: "Pendidikan Agama Kristen", image: "https://picsum.photos/seed/lecturer2/400/400" },
-  { id: 3, name: "Pdt. Marthen Tabuni, M.Miss", role: "Kaprodi Teologi", expertise: "Misiologi", image: "https://picsum.photos/seed/lecturer3/400/400" },
-  { id: 4, name: "Dr. Ruth Jigibalom, M.Th", role: "Kaprodi Pascasarjana", expertise: "Perjanjian Baru", image: "https://picsum.photos/seed/lecturer4/400/400" },
-  { id: 5, name: "Pdt. Simon Wanimbo, M.Th", role: "Dosen Tetap", expertise: "Perjanjian Lama", image: "https://picsum.photos/seed/lecturer5/400/400" },
-  { id: 6, name: "Debora Enumbi, M.Pd", role: "Dosen Tetap", expertise: "Psikologi Pendidikan", image: "https://picsum.photos/seed/lecturer6/400/400" },
-  { id: 7, name: "Pdt. Lukas Enembe, M.Min", role: "Dosen Tetap", expertise: "Pastoral Konseling", image: "https://picsum.photos/seed/lecturer7/400/400" },
-  { id: 8, name: "Maria Haluk, M.Th", role: "Dosen Tetap", expertise: "Sejarah Gereja", image: "https://picsum.photos/seed/lecturer8/400/400" },
+  { 
+    id: 1, 
+    name: "Pdt. Dr. Yance Kogoya, M.Th", 
+    role: "Ketua STT", 
+    expertise: "Teologi Sistematika", 
+    image: "https://picsum.photos/seed/lecturer1/400/400",
+    email: "yance.kogoya@sttwpj.ac.id",
+    linkedin: "https://www.linkedin.com"
+  },
+  { 
+    id: 2, 
+    name: "Dr. Sarah Wenda, M.Pd.K", 
+    role: "Wakil Ketua I", 
+    expertise: "Pendidikan Agama Kristen", 
+    image: "https://picsum.photos/seed/lecturer2/400/400",
+    email: "sarah.wenda@sttwpj.ac.id",
+    linkedin: "https://www.linkedin.com"
+  },
+  { 
+    id: 3, 
+    name: "Pdt. Marthen Tabuni, M.Miss", 
+    role: "Kaprodi Teologi", 
+    expertise: "Misiologi", 
+    image: "https://picsum.photos/seed/lecturer3/400/400",
+    email: "marthen.tabuni@sttwpj.ac.id",
+    linkedin: "https://www.linkedin.com"
+  },
+  { 
+    id: 4, 
+    name: "Dr. Ruth Jigibalom, M.Th", 
+    role: "Kaprodi Pascasarjana", 
+    expertise: "Perjanjian Baru", 
+    image: "https://picsum.photos/seed/lecturer4/400/400",
+    email: "ruth.jigibalom@sttwpj.ac.id",
+    linkedin: "https://www.linkedin.com"
+  },
+  { 
+    id: 5, 
+    name: "Pdt. Simon Wanimbo, M.Th", 
+    role: "Dosen Tetap", 
+    expertise: "Perjanjian Lama", 
+    image: "https://picsum.photos/seed/lecturer5/400/400",
+    email: "simon.wanimbo@sttwpj.ac.id",
+    linkedin: "https://www.linkedin.com"
+  },
+  { 
+    id: 6, 
+    name: "Debora Enumbi, M.Pd", 
+    role: "Dosen Tetap", 
+    expertise: "Psikologi Pendidikan", 
+    image: "https://picsum.photos/seed/lecturer6/400/400",
+    email: "debora.enumbi@sttwpj.ac.id",
+    linkedin: "https://www.linkedin.com"
+  },
+  { 
+    id: 7, 
+    name: "Pdt. Lukas Enembe, M.Min", 
+    role: "Dosen Tetap", 
+    expertise: "Pastoral Konseling", 
+    image: "https://picsum.photos/seed/lecturer7/400/400",
+    email: "lukas.enembe@sttwpj.ac.id",
+    linkedin: "https://www.linkedin.com"
+  },
+  { 
+    id: 8, 
+    name: "Maria Haluk, M.Th", 
+    role: "Dosen Tetap", 
+    expertise: "Sejarah Gereja", 
+    image: "https://picsum.photos/seed/lecturer8/400/400",
+    email: "maria.haluk@sttwpj.ac.id",
+    linkedin: "https://www.linkedin.com"
+  },
 ];
 
 export const LecturersList: React.FC = () => {
@@ -34,8 +98,22 @@ export const LecturersList: React.FC = () => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-primary/90 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
                     <div className="flex gap-4">
-                        <a href="#" className="text-white hover:text-accent"><Mail /></a>
-                        <a href="#" className="text-white hover:text-accent"><Linkedin /></a>
+                        <a 
+                          href={`mailto:${lecturer.email}`} 
+                          className="text-white hover:text-accent transition-colors p-2 hover:bg-white/20 rounded-full"
+                          title="Kirim Email"
+                        >
+                          <Mail />
+                        </a>
+                        <a 
+                          href={lecturer.linkedin} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="text-white hover:text-accent transition-colors p-2 hover:bg-white/20 rounded-full"
+                          title="Profil LinkedIn"
+                        >
+                          <Linkedin />
+                        </a>
                     </div>
                     </div>
                 </div>

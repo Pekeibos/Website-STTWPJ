@@ -308,10 +308,10 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
         {/* Refined Mobile Menu */}
         <div 
           className={`lg:hidden bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800 overflow-hidden transition-all duration-500 ease-in-out ${
-            isMobileMenuOpen ? 'max-h-[90vh] opacity-100 shadow-xl' : 'max-h-0 opacity-0'
+            isMobileMenuOpen ? 'max-h-screen opacity-100 shadow-xl' : 'max-h-0 opacity-0'
           }`}
         >
-            <div className="flex flex-col py-6 px-6 space-y-2 overflow-y-auto max-h-[80vh]">
+            <div className="flex flex-col py-6 px-6 space-y-2 overflow-y-auto max-h-[85vh]">
               {/* Mobile Search */}
               <form onSubmit={handleSearch} className="mb-6 relative">
                  <input 
@@ -342,7 +342,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
                   </div>
                  
                   {item.subItems && (
-                    <div className="pl-4 border-l-2 border-gray-100 dark:border-gray-700 ml-2 mb-3 space-y-1">
+                    <div className="pl-6 border-l-2 border-gray-100 dark:border-gray-700 ml-4 mb-3 space-y-1">
                       {item.subItems.map((sub, idx) => (
                          <Link
                           key={idx}
@@ -359,7 +359,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
                   )}
                 </div>
               ))}
-              <div className="pt-6">
+              <div className="pt-6 pb-20">
                 <Link to="/layanan/pmb" className="bg-secondary text-white text-center py-4 rounded-lg font-bold block shadow-lg hover:bg-red-800 hover:shadow-xl transition-all active:scale-95" onClick={() => setIsMobileMenuOpen(false)}>
                     Daftar Mahasiswa Baru
                 </Link>
@@ -375,16 +375,16 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
         </div>
       </main>
 
-      {/* Back to Top Button */}
-      {showBackToTop && (
-        <button
-          onClick={scrollToTop}
-          className="fixed bottom-8 right-6 z-40 bg-primary dark:bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-accent dark:hover:bg-blue-500 transition-all duration-300 animate-bounce-subtle flex items-center justify-center group"
-          aria-label="Kembali ke atas"
-        >
-          <ChevronUp size={24} className="group-hover:-translate-y-1 transition-transform" />
-        </button>
-      )}
+      {/* Back to Top Button with Smooth Zoom Animation */}
+      <button
+        onClick={scrollToTop}
+        className={`fixed bottom-8 right-6 z-40 bg-primary dark:bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-accent dark:hover:bg-blue-500 transition-all duration-300 flex items-center justify-center group transform ${
+          showBackToTop ? 'scale-100 opacity-100 translate-y-0' : 'scale-0 opacity-0 translate-y-4 pointer-events-none'
+        }`}
+        aria-label="Kembali ke atas"
+      >
+        <ChevronUp size={24} className="group-hover:-translate-y-1 transition-transform" />
+      </button>
 
       {/* Footer */}
       <footer className="bg-primary dark:bg-gray-950 text-white pt-16 pb-8 border-t-4 border-accent">
@@ -406,28 +406,28 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
                 Mewujudkan pemimpin gereja yang berintegritas, Alkitabiah, dan berwawasan misi untuk melayani di Tanah Papua dan Indonesia.
               </p>
               
-              {/* Social Icons with Brand Colors */}
+              {/* Visually Distinct Social Icons */}
               <div className="flex space-x-3 pt-4">
                 <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" 
-                   className="bg-white/10 p-2.5 rounded-full hover:bg-white hover:text-[#1877F2] transition-all duration-300 transform hover:scale-110 group" aria-label="Facebook">
-                    <Facebook size={20} className="group-hover:fill-current" />
+                   className="bg-blue-600 text-white p-2.5 rounded-full hover:bg-blue-700 shadow-md transform hover:scale-110 transition-all duration-300" aria-label="Facebook">
+                    <Facebook size={18} fill="currentColor" />
                 </a>
                 <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" 
-                   className="bg-white/10 p-2.5 rounded-full hover:bg-white hover:text-[#000000] transition-all duration-300 transform hover:scale-110 group" aria-label="Twitter">
-                    <Twitter size={20} className="group-hover:fill-current" />
+                   className="bg-sky-500 text-white p-2.5 rounded-full hover:bg-sky-600 shadow-md transform hover:scale-110 transition-all duration-300" aria-label="Twitter">
+                    <Twitter size={18} fill="currentColor" />
                 </a>
                 <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" 
-                   className="bg-white/10 p-2.5 rounded-full hover:bg-white hover:text-[#E4405F] transition-all duration-300 transform hover:scale-110 group" aria-label="Instagram">
-                    <Instagram size={20} />
+                   className="bg-pink-600 text-white p-2.5 rounded-full hover:bg-pink-700 shadow-md transform hover:scale-110 transition-all duration-300" aria-label="Instagram">
+                    <Instagram size={18} />
                 </a>
                 <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" 
-                   className="bg-white/10 p-2.5 rounded-full hover:bg-white hover:text-[#FF0000] transition-all duration-300 transform hover:scale-110 group" aria-label="YouTube">
-                    <Youtube size={20} className="group-hover:fill-current" />
+                   className="bg-red-600 text-white p-2.5 rounded-full hover:bg-red-700 shadow-md transform hover:scale-110 transition-all duration-300" aria-label="YouTube">
+                    <Youtube size={18} fill="currentColor" />
                 </a>
               </div>
             </div>
 
-            {/* Quick Links - Checked & Functional */}
+            {/* Quick Links */}
             <div>
               <h4 className="font-serif font-bold text-lg mb-6 border-b border-blue-700 dark:border-gray-800 pb-2 inline-block">Tautan Cepat</h4>
               <ul className="space-y-3 text-sm text-gray-300">
