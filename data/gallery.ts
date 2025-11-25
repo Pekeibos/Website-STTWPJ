@@ -54,7 +54,7 @@ export const galleryData: GalleryItem[] = [
     date: '05 April 2024'
   },
   
-  // Images - Kegiatan
+  // Images - Kegiatan Kampus & Mahasiswa
   { 
     id: 5, 
     type: 'image', 
@@ -68,11 +68,11 @@ export const galleryData: GalleryItem[] = [
   { 
     id: 6, 
     type: 'image', 
-    category: 'Kegiatan Kampus', 
-    title: 'KKN di Wamena', 
+    category: 'Kegiatan Mahasiswa', 
+    title: 'KKN Mahasiswa di Wamena', 
     url: 'https://picsum.photos/id/1015/1200/800', 
     desc: 'Mahasiswa melayani masyarakat di daerah pedalaman.',
-    fullContent: 'Mahasiswa semester akhir melaksanakan Kuliah Kerja Nyata (KKN) di daerah Wamena. Mereka terlibat dalam pembangunan saluran air bersih, mengajar di sekolah dasar, dan memberikan penyuluhan kesehatan serta kerohanian kepada masyarakat setempat.',
+    fullContent: 'Mahasiswa semester akhir melaksanakan Kuliah Kerja Nyata (KKN) di daerah Wamena. Mereka terlibat dalam pembangunan saluran air bersih, mengajar di sekolah dasar, dan memberikan penyuluhan kesehatan serta kerohanian kepada masyarakat setempat. Pengalaman ini membentuk karakter hamba Tuhan yang siap melayani dalam segala situasi.',
     date: 'Juli 2024'
   },
   { 
@@ -84,6 +84,48 @@ export const galleryData: GalleryItem[] = [
     desc: 'Perayaan Natal keluarga besar STT Walter Post.',
     fullContent: 'Perayaan Natal tahun ini mengangkat tema "Terang yang Membawa Harapan". Acara dimeriahkan oleh penampilan paduan suara mahasiswa, drama musikal, dan penyalaan lilin. Dihadiri oleh seluruh civitas akademika dan alumni.',
     date: '10 Desember 2024'
+  },
+  {
+    id: 13,
+    type: 'image',
+    category: 'Kegiatan Mahasiswa',
+    title: "Lomba Paduan Suara",
+    url: "https://picsum.photos/id/453/1200/800",
+    desc: "Memeriahkan HUT RI dan HUT Kampus dengan puji-pujian yang harmonis.",
+    fullContent: "Unit Kegiatan Mahasiswa (UKM) Paduan Suara mengadakan kompetisi antar angkatan. Kegiatan ini bertujuan untuk menggali talenta musik gerejawi mahasiswa. Setiap angkatan menampilkan satu lagu wajib dan satu lagu pilihan daerah Papua.",
+    date: "Agustus 2024"
+  },
+  {
+    id: 14,
+    type: 'image',
+    category: 'Kegiatan Mahasiswa',
+    title: "Pertandingan Futsal Persahabatan",
+    url: "https://picsum.photos/id/1058/1200/800",
+    desc: "Menjalin keakraban dengan STT GIDI melalui olahraga.",
+    fullContent: "Dalam rangka mempererat tali persaudaraan antar sekolah teologi, Tim Futsal STT WPJ menjamu Tim STT GIDI dalam laga persahabatan. Pertandingan berlangsung seru dan sportif, diakhiri dengan doa bersama dan makan malam.",
+    date: "Oktober 2024"
+  },
+
+  // Images - Alumni
+  {
+    id: 20,
+    type: 'image',
+    category: 'Alumni',
+    title: "Reuni Akbar Alumni 2023",
+    url: "https://picsum.photos/id/338/1200/800",
+    desc: "Temu kangen dan sharing pelayanan antar angkatan.",
+    fullContent: "Ribuan alumni dari berbagai angkatan memadati halaman kampus untuk mengikuti Reuni Akbar. Acara ini menjadi momen saling menguatkan dalam pelayanan. Banyak alumni yang kini melayani di daerah terpencil membagikan kesaksian yang menginspirasi mahasiswa aktif.",
+    date: "November 2023"
+  },
+  {
+    id: 21,
+    type: 'image',
+    category: 'Alumni',
+    title: "Pelantikan Pengurus Ikatan Alumni",
+    url: "https://picsum.photos/id/514/1200/800",
+    desc: "Sinergi alumni untuk kemajuan almamater.",
+    fullContent: "Ketua STT melantik Badan Pengurus Ikatan Alumni periode baru. Organisasi alumni ini berkomitmen untuk memberikan beasiswa bagi mahasiswa kurang mampu dan mendukung pembangunan fasilitas asrama kampus.",
+    date: "Januari 2024"
   },
 
   // Videos

@@ -1,8 +1,13 @@
+
 import React from 'react';
-import { Section, SectionTitle } from '../components/UI';
+import { Section, SectionTitle, NewsCard } from '../components/UI';
 import { Map, Users, Briefcase } from 'lucide-react';
+import { galleryData } from '../data/gallery';
 
 export const AlumniProfile: React.FC = () => {
+  // Filter alumni gallery items
+  const alumniGallery = galleryData.filter(item => item.category === 'Alumni');
+
   return (
     <>
       <div className="bg-primary text-white py-20 text-center">
@@ -13,6 +18,7 @@ export const AlumniProfile: React.FC = () => {
       </div>
       
       <Section>
+        {/* Statistics */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
             <div className="bg-white p-8 rounded-xl shadow text-center border-b-4 border-primary">
                 <Users size={40} className="mx-auto text-primary mb-4" />
@@ -31,10 +37,11 @@ export const AlumniProfile: React.FC = () => {
             </div>
         </div>
 
+        {/* Kiprah Alumni - Testimonials */}
         <SectionTitle title="Kiprah Alumni" subtitle="Alumni kami melayani di berbagai bidang strategis." centered />
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-            <div className="bg-gray-50 p-6 rounded-xl flex gap-4 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8 mb-20">
+            <div className="bg-gray-50 p-6 rounded-xl flex gap-4 items-start border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
                 <img src="https://picsum.photos/seed/alumnus1/100/100" className="w-20 h-20 rounded-full object-cover border-2 border-white shadow" alt="Alumni" />
                 <div>
                     <h4 className="font-bold text-lg">Pdt. Yan Wenda, M.Th</h4>
@@ -42,7 +49,7 @@ export const AlumniProfile: React.FC = () => {
                     <p className="text-sm text-gray-600 italic">"Pendidikan di STT WPJ membentuk karakter kepemimpinan yang saya butuhkan untuk memimpin ribuan jemaat hari ini."</p>
                 </div>
             </div>
-            <div className="bg-gray-50 p-6 rounded-xl flex gap-4 items-start">
+            <div className="bg-gray-50 p-6 rounded-xl flex gap-4 items-start border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
                 <img src="https://picsum.photos/seed/alumnus2/100/100" className="w-20 h-20 rounded-full object-cover border-2 border-white shadow" alt="Alumni" />
                 <div>
                     <h4 className="font-bold text-lg">Maria Tabuni, S.Pd</h4>
@@ -51,6 +58,26 @@ export const AlumniProfile: React.FC = () => {
                 </div>
             </div>
         </div>
+
+        {/* Galeri Alumni Section */}
+        {alumniGallery.length > 0 && (
+          <div className="border-t border-gray-200 pt-16">
+            <SectionTitle title="Galeri & Dokumentasi Alumni" subtitle="Momen kebersamaan dan kegiatan Ikatan Alumni STT WPJ." />
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {alumniGallery.map((item) => (
+                    <NewsCard 
+                        key={item.id}
+                        title={item.title}
+                        date={item.date}
+                        category={item.category}
+                        image={item.url}
+                        description={item.desc}
+                        link={`/profil/galeri/${item.id}`}
+                    />
+                ))}
+            </div>
+          </div>
+        )}
       </Section>
     </>
   );

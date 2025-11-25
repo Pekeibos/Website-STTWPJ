@@ -1,42 +1,14 @@
+
 import React from 'react';
 import { Section, NewsCard } from '../components/UI';
-
-const activities = [
-  {
-    id: 1,
-    title: "KKN Mahasiswa di Wamena",
-    date: "Juli 2024",
-    category: "Pengabdian",
-    image: "https://picsum.photos/seed/kkn/600/400",
-    desc: "Mahasiswa tingkat akhir melaksanakan Kuliah Kerja Nyata dengan membangun fasilitas air bersih dan mengajar di sekolah minggu."
-  },
-  {
-    id: 2,
-    title: "Lomba Paduan Suara Antar Angkatan",
-    date: "Agustus 2024",
-    category: "Seni",
-    image: "https://picsum.photos/seed/choir/600/400",
-    desc: "Memeriahkan HUT RI dan HUT Kampus dengan puji-pujian yang harmonis."
-  },
-  {
-    id: 3,
-    title: "Seminar Kepemimpinan Mahasiswa",
-    date: "September 2024",
-    category: "Pelatihan",
-    image: "https://picsum.photos/seed/leadership/600/400",
-    desc: "Mempersiapkan pengurus BEM periode baru dengan materi manajemen organisasi dan kepemimpinan Kristen."
-  },
-  {
-    id: 4,
-    title: "Pertandingan Futsal Persahabatan",
-    date: "Oktober 2024",
-    category: "Olahraga",
-    image: "https://picsum.photos/seed/futsal/600/400",
-    desc: "Menjalin keakraban dengan STT GIDI melalui olahraga."
-  }
-];
+import { galleryData } from '../data/gallery';
 
 export const StudentActivities: React.FC = () => {
+  // Filter activities from the centralized gallery data
+  const activities = galleryData.filter(
+    item => item.category === 'Kegiatan Mahasiswa' || item.category === 'Kegiatan'
+  );
+
   return (
     <>
       <div className="bg-primary text-white py-20 text-center">
@@ -47,17 +19,23 @@ export const StudentActivities: React.FC = () => {
       </div>
       <Section>
          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {activities.map((item) => (
-                <NewsCard 
-                    key={item.id}
-                    title={item.title}
-                    date={item.date}
-                    category={item.category}
-                    image={item.image}
-                    description={item.desc}
-                    link="#"
-                />
-            ))}
+            {activities.length > 0 ? (
+                activities.map((item) => (
+                    <NewsCard 
+                        key={item.id}
+                        title={item.title}
+                        date={item.date}
+                        category={item.category}
+                        image={item.type === 'video' ? (item.thumbnail || item.url) : item.url}
+                        description={item.desc}
+                        link={`/profil/galeri/${item.id}`}
+                    />
+                ))
+            ) : (
+                <div className="col-span-full text-center py-12 text-gray-500">
+                    <p>Belum ada dokumentasi kegiatan mahasiswa yang ditampilkan.</p>
+                </div>
+            )}
          </div>
       </Section>
     </>
