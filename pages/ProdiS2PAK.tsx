@@ -23,8 +23,11 @@ export const ProdiS2PAK: React.FC = () => {
                 <h3 className="text-2xl font-bold font-serif mb-4 text-primary dark:text-blue-400 mt-8">Profil Lulusan</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
                     {['Dosen PAK', 'Kepala Sekolah Kristen', 'Pengawas Pendidikan Agama', 'Konsultan Kurikulum'].map((item, i) => (
-                        <div key={i} className="flex items-center gap-3 bg-white dark:bg-gray-800 p-4 rounded-lg border border-gray-100 dark:border-gray-700 shadow-sm text-gray-800 dark:text-gray-200 hover:-translate-y-1 transition-transform duration-300">
-                            <CheckCircle className="text-accent flex-shrink-0" /> <span className="font-medium">{item}</span>
+                        <div key={i} className="flex items-center gap-3 bg-white dark:bg-gray-800 p-4 rounded-lg border border-gray-200 dark:border-gray-600 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+                            <div className="bg-gray-100 dark:bg-gray-700 p-2 rounded-full">
+                                <CheckCircle className="text-primary dark:text-blue-400 flex-shrink-0" size={20} />
+                            </div>
+                            <span className="font-bold text-gray-800 dark:text-gray-100">{item}</span>
                         </div>
                     ))}
                 </div>

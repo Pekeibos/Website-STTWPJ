@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone, Mail, Facebook, Instagram, Youtube, Twitter, ChevronDown, ChevronUp, Search, Moon, Sun, MapPin } from 'lucide-react';
 import { NavItem } from '../types';
+import { AnnouncementPopup } from './AnnouncementPopup';
 
 const navItems: NavItem[] = [
   { label: 'Beranda', path: '/' },
@@ -169,6 +170,9 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
   return (
     <div className="flex flex-col min-h-screen font-sans relative dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
       
+      {/* Pop Up Announcement */}
+      <AnnouncementPopup />
+
       {/* Smooth Page Load Overlay */}
       <div 
         className={`fixed inset-0 z-[100] flex flex-col items-center justify-center bg-white dark:bg-gray-950 transition-all duration-500 ease-in-out pointer-events-none ${

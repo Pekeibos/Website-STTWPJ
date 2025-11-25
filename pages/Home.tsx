@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Section, SectionTitle, Button, NewsCard } from '../components/UI';
-import { BookOpen, Users, Globe, Award, ChevronRight, CheckCircle2, ChevronDown, Quote } from 'lucide-react';
+import { BookOpen, Users, Globe, Award, ChevronRight, ChevronDown, Quote, ChevronLeft, Star, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const features = [
@@ -31,7 +31,79 @@ const testimonials = [
   }
 ];
 
+const heroSlides = [
+  {
+    id: 1,
+    image: "https://picsum.photos/seed/campus1/1920/1080",
+    badge: "STT WALTER POST JAYAPURA",
+    title: "Selamat Datang di Kampus STT Walter Post Jayapura Papua",
+    subtitle: "Mewujudkan pemimpin gereja yang berintegritas, Alkitabiah, dan berwawasan misi untuk melayani di Tanah Papua dan Indonesia.",
+    ctaPrimary: { text: "Daftar Sekarang", link: "/layanan/pmb" },
+    ctaSecondary: { text: "Tentang Kampus", link: "/profil/sejarah" }
+  },
+  {
+    id: 2,
+    image: "https://picsum.photos/seed/vision/1920/1080", // Image representing Vision
+    badge: "VISI & MISI 2031",
+    title: "Menjadi Perguruan Tinggi Teologi yang Mandiri & Unggul",
+    subtitle: "Kami berkomitmen menyelenggarakan pendidikan teologi kontekstual yang berkualitas sesuai standar nasional.",
+    ctaPrimary: { text: "Baca Visi & Misi", link: "/profil/visi-misi" },
+    ctaSecondary: { text: "Struktur Organisasi", link: "/profil/struktur" }
+  },
+  {
+    id: 3,
+    image: "https://picsum.photos/seed/worship/1920/1080", // Image representing Values
+    badge: "NILAI-NILAI INTI",
+    title: "Alkitabiah, Integritas, & Misioner",
+    subtitle: "Tiga pilar utama yang menjadi landasan pembentukan karakter setiap mahasiswa STT Walter Post Jayapura.",
+    ctaPrimary: { text: "Pelajari Nilai Kami", link: "/profil/nilai" },
+    ctaSecondary: { text: "Kehidupan Kampus", link: "/mahasiswa/kegiatan" }
+  },
+  {
+    id: 4,
+    image: "https://picsum.photos/seed/class/1920/1080", // Image representing Academics/Why Us
+    badge: "KENAPA STT WPJ?",
+    title: "Pendidikan Berkualitas & Terakreditasi",
+    subtitle: "Didukung dosen berkualifikasi S2 & S3, fasilitas lengkap, dan kurikulum yang relevan dengan kebutuhan pelayanan masa kini.",
+    ctaPrimary: { text: "Lihat Fasilitas", link: "/program-studi/fasilitas" },
+    ctaSecondary: { text: "Profil Dosen", link: "/dosen/pendidik" }
+  },
+  {
+    id: 5,
+    image: "https://picsum.photos/seed/library/1920/1080", // Image representing Research
+    badge: "RISET & LITERASI",
+    title: "Pusat Pengembangan Pemikiran Teologis",
+    subtitle: "Akses ribuan literatur melalui E-Library dan E-Jurnal untuk mendukung ketajaman analisis teologis.",
+    ctaPrimary: { text: "Akses E-Jurnal", link: "/layanan/ejurnal" },
+    ctaSecondary: { text: "Perpustakaan", link: "/layanan/elibrary" }
+  }
+];
+
 export const Home: React.FC = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+
+  // Auto-play effect
+  useEffect(() => {
+    let interval: number;
+    if (isAutoPlaying) {
+      interval = setInterval(() => {
+        setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+      }, 6000); // Change slide every 6 seconds
+    }
+    return () => clearInterval(interval);
+  }, [isAutoPlaying]);
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
+    setIsAutoPlaying(false); // Pause auto-play on interaction
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev === 0 ? heroSlides.length - 1 : prev - 1));
+    setIsAutoPlaying(false);
+  };
+
   const scrollToContent = () => {
     const contentElement = document.getElementById('content-start');
     if (contentElement) {
@@ -41,59 +113,106 @@ export const Home: React.FC = () => {
 
   return (
     <>
-      {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden pb-20">
-        {/* Background Image with Overlay */}
-        <div className="absolute inset-0 z-0">
-          {/* Placeholder for Main Campus Image */}
-          <img 
-            src="https://picsum.photos/seed/campus1/1920/1080" 
-            alt="Kampus STT Walter Post Jayapura" 
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-transparent"></div>
-        </div>
+      {/* Dynamic Hero Carousel Section */}
+      <section 
+        className="relative h-[90vh] min-h-[600px] flex items-center justify-center overflow-hidden bg-gray-900"
+        onMouseEnter={() => setIsAutoPlaying(false)}
+        onMouseLeave={() => setIsAutoPlaying(true)}
+      >
+        {heroSlides.map((slide, index) => (
+          <div 
+            key={slide.id}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+              index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
+            }`}
+          >
+            {/* Background Image with Zoom Effect */}
+            <div className="absolute inset-0 overflow-hidden">
+               <img 
+                src={slide.image} 
+                alt={slide.title} 
+                className={`w-full h-full object-cover transition-transform duration-[8000ms] ease-linear ${
+                  index === currentSlide ? 'scale-110' : 'scale-100'
+                }`}
+              />
+              {/* Dark Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/70 to-black/40"></div>
+            </div>
 
-        {/* Hero Content */}
-        <div className="container mx-auto px-6 relative z-10 pt-16 pb-12">
-          <div className="max-w-4xl text-white">
-            <span className="inline-block bg-accent/90 text-white px-4 py-1.5 rounded-full text-sm font-bold tracking-wider mb-6 animate-fade-in-up">
-              MENERIMA MAHASISWA BARU 2026
-            </span>
-            <h1 className="text-3xl md:text-5xl font-bold font-serif leading-tight mb-6 drop-shadow-lg">
-              Mewujudkan Pemimpin Gereja yang <span className="text-accent italic">Berintegritas</span> & Berwawasan Misi Kontekstual
-            </h1>
-            <p className="text-lg md:text-xl text-gray-200 mb-8 leading-relaxed max-w-2xl">
-              Sekolah Tinggi Teologi Walter Post Jayapura hadir untuk memperlengkapi hamba Tuhan yang siap melayani di tanah Papua dan Indonesia dengan dasar Alkitab yang teguh dan pelayanan yang kontekstual.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 mb-8">
-              <Button to="/layanan/pmb" variant="secondary" className="shadow-xl">
-                Daftar Sekarang
-              </Button>
-              <Button to="/profil/sejarah" variant="outline" className="text-white border-white hover:bg-white hover:text-primary">
-                Tentang Kampus
-              </Button>
+            {/* Content */}
+            <div className="container mx-auto px-6 h-full flex flex-col justify-center relative z-20 pt-16">
+               <div className={`max-w-4xl text-white transition-all duration-1000 transform ${
+                 index === currentSlide ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
+               }`}>
+                  <span className="inline-block bg-accent/90 text-white px-4 py-1.5 rounded-full text-sm font-bold tracking-widest mb-6 shadow-lg border-l-4 border-white">
+                    {slide.badge}
+                  </span>
+                  <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold font-serif leading-tight mb-6 drop-shadow-lg">
+                    {slide.title}
+                  </h1>
+                  <p className="text-lg md:text-xl text-gray-200 mb-8 leading-relaxed max-w-2xl border-l-4 border-accent pl-6 bg-black/10 py-2 rounded-r-lg">
+                    {slide.subtitle}
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <Button to={slide.ctaPrimary.link} variant="secondary" className="shadow-xl text-lg py-4 px-8">
+                      {slide.ctaPrimary.text}
+                    </Button>
+                    <Button to={slide.ctaSecondary.link} variant="outline" className="text-white border-white hover:bg-white hover:text-primary text-lg py-4 px-8">
+                      {slide.ctaSecondary.text}
+                    </Button>
+                  </div>
+               </div>
             </div>
           </div>
+        ))}
+
+        {/* Carousel Controls */}
+        <button 
+          onClick={prevSlide}
+          className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-30 bg-white/10 hover:bg-white/30 text-white p-3 rounded-full backdrop-blur-sm transition-all border border-white/20 hover:scale-110 hidden md:block"
+        >
+          <ChevronLeft size={32} />
+        </button>
+        <button 
+          onClick={nextSlide}
+          className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-30 bg-white/10 hover:bg-white/30 text-white p-3 rounded-full backdrop-blur-sm transition-all border border-white/20 hover:scale-110 hidden md:block"
+        >
+          <ChevronRight size={32} />
+        </button>
+
+        {/* Dots Indicators */}
+        <div className="absolute bottom-24 md:bottom-16 left-1/2 transform -translate-x-1/2 z-30 flex space-x-3">
+          {heroSlides.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={() => { setCurrentSlide(idx); setIsAutoPlaying(false); }}
+              className={`h-2 rounded-full transition-all duration-300 ${
+                idx === currentSlide ? 'w-12 bg-accent' : 'w-2 bg-white/50 hover:bg-white'
+              }`}
+              aria-label={`Go to slide ${idx + 1}`}
+            />
+          ))}
         </div>
 
         {/* Scroll Down Indicator */}
-        <div className="absolute bottom-28 md:bottom-24 left-1/2 transform -translate-x-1/2 z-20 animate-bounce cursor-pointer" onClick={scrollToContent}>
-          <div className="flex flex-col items-center text-white/80 hover:text-white transition-colors">
-            <span className="text-xs font-bold tracking-widest mb-2">SCROLL</span>
-            <ChevronDown size={32} />
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-30 animate-bounce cursor-pointer opacity-70 hover:opacity-100 transition-opacity" onClick={scrollToContent}>
+          <div className="flex flex-col items-center text-white">
+            <span className="text-[10px] font-bold tracking-widest mb-1">SCROLL</span>
+            <ChevronDown size={24} />
           </div>
         </div>
       </section>
 
       {/* Quick Features Section */}
-      <section id="content-start" className="py-12 bg-white relative -mt-20 z-20">
+      <section id="content-start" className="py-12 bg-white relative -mt-0 z-20">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {features.map((feature, idx) => (
-              <div key={idx} className="bg-white p-8 rounded-xl shadow-lg border-b-4 border-accent hover:-translate-y-2 transition-transform duration-300">
-                <div className="mb-4 bg-blue-50 w-16 h-16 rounded-full flex items-center justify-center">
-                  {feature.icon}
+              <div key={idx} className="bg-white p-8 rounded-xl shadow-lg border-b-4 border-accent hover:-translate-y-2 transition-transform duration-300 group">
+                <div className="mb-4 bg-blue-50 w-16 h-16 rounded-full flex items-center justify-center group-hover:bg-primary transition-colors">
+                  <div className="group-hover:text-white transition-colors">
+                     {feature.icon}
+                  </div>
                 </div>
                 <h3 className="text-xl font-bold text-primary mb-2 font-serif">{feature.title}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">{feature.desc}</p>
@@ -103,7 +222,7 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Fasilitas Kampus Section (Matching User's Images) */}
+      {/* Fasilitas Kampus Section */}
       <Section className="bg-gray-50" pattern>
         <SectionTitle 
           title="Fasilitas Kampus" 
@@ -111,7 +230,7 @@ export const Home: React.FC = () => {
           centered
         />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
-           {/* Gedung Kuliah Teologi (Resembling the tall cream building) */}
+           {/* Gedung Kuliah Teologi */}
            <div className="relative group overflow-hidden rounded-xl shadow-xl h-96">
               <img 
                 src="https://placehold.co/600x800/fef3c7/1e293b?text=Gedung+Kuliah+Teologi+(Cream+Building)" 
@@ -120,11 +239,14 @@ export const Home: React.FC = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-8">
                 <h3 className="text-white text-2xl font-bold font-serif mb-2">Gedung Kuliah Teologi</h3>
-                <p className="text-gray-200 text-sm">Pusat kegiatan akademik program studi S1 & S2.</p>
+                <p className="text-gray-200 text-sm mb-4">Pusat kegiatan akademik program studi S1 & S2.</p>
+                <Link to="/program-studi/fasilitas" className="inline-flex items-center text-accent text-sm font-bold hover:text-white transition-colors">
+                   Lihat Fasilitas <ArrowRight size={16} className="ml-1" />
+                </Link>
               </div>
            </div>
 
-           {/* Gedung Asrama/Kelas (Resembling the long 2-story building) */}
+           {/* Gedung Asrama/Kelas */}
            <div className="flex flex-col gap-8 h-96">
              <div className="relative group overflow-hidden rounded-xl shadow-xl flex-grow">
                 <img 
@@ -137,7 +259,7 @@ export const Home: React.FC = () => {
                   <p className="text-gray-200 text-xs">Fasilitas tempat tinggal dan belajar yang nyaman.</p>
                 </div>
              </div>
-             <div className="bg-white p-6 rounded-xl shadow-lg border-l-4 border-primary flex items-center justify-between">
+             <div className="bg-white p-6 rounded-xl shadow-lg border-l-4 border-primary flex items-center justify-between hover:shadow-xl transition-shadow">
                 <div>
                   <h4 className="font-bold text-primary text-lg">Suasana Kampus Asri</h4>
                   <p className="text-sm text-gray-600">Dikelilingi alam hijau yang mendukung ketenangan studi.</p>
