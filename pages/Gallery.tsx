@@ -1,39 +1,11 @@
+
 import React, { useState } from 'react';
-import { Section, SectionTitle } from '../components/UI';
-import { Play, Mic, Image as ImageIcon, Headphones } from 'lucide-react';
+import { Section } from '../components/UI';
+import { Play, Mic, Image as ImageIcon, Headphones, Eye } from 'lucide-react';
+import { galleryData } from '../data/gallery';
+import { Link } from 'react-router-dom';
 
 type MediaType = 'all' | 'image' | 'video' | 'audio';
-
-interface GalleryItem {
-  id: number;
-  type: 'image' | 'video' | 'audio';
-  category: string;
-  title: string;
-  url: string; // URL for image src, video embed, or audio file
-  desc?: string;
-}
-
-const galleryData: GalleryItem[] = [
-  // Images - Sarana & Prasarana
-  { id: 1, type: 'image', category: 'Sarana & Prasarana', title: 'Gedung Rektorat Utama', url: 'https://picsum.photos/id/1018/800/600', desc: 'Pusat administrasi kampus STT WPJ.' },
-  { id: 2, type: 'image', category: 'Sarana & Prasarana', title: 'Perpustakaan Kampus', url: 'https://picsum.photos/id/1073/800/600', desc: 'Fasilitas perpustakaan lengkap dengan ruang baca digital.' },
-  { id: 3, type: 'image', category: 'Sarana & Prasarana', title: 'Kapel Kampus', url: 'https://picsum.photos/id/1029/800/600', desc: 'Tempat ibadah rutin civitas akademika.' },
-  { id: 4, type: 'image', category: 'Sarana & Prasarana', title: 'Asrama Putra', url: 'https://picsum.photos/id/1040/800/600', desc: 'Fasilitas tempat tinggal mahasiswa yang nyaman.' },
-  
-  // Images - Kegiatan
-  { id: 5, type: 'image', category: 'Kegiatan Kampus', title: 'Wisuda Angkatan XX', url: 'https://picsum.photos/id/1059/800/600', desc: 'Momen kebahagiaan para wisudawan dan orang tua.' },
-  { id: 6, type: 'image', category: 'Kegiatan Kampus', title: 'KKN di Wamena', url: 'https://picsum.photos/id/1015/800/600', desc: 'Mahasiswa melayani masyarakat di daerah pedalaman.' },
-  { id: 7, type: 'image', category: 'Kegiatan Kampus', title: 'Natal Bersama', url: 'https://picsum.photos/id/1060/800/600', desc: 'Perayaan Natal keluarga besar STT Walter Post.' },
-
-  // Videos
-  { id: 8, type: 'video', category: 'Video Profil', title: 'Profil Kampus STT Walter Post', url: 'https://www.youtube.com/embed/dQw4w9WgXcQ?si=SimulatedVideoID', desc: 'Mengenal lebih dekat visi dan misi kampus.' },
-  { id: 9, type: 'video', category: 'Kegiatan', title: 'Dokumentasi Retreat Mahasiswa', url: 'https://www.youtube.com/embed/lxRwEPvL-mQ?si=SimulatedVideoID2', desc: 'Keseruan dan pertumbuhan rohani selama retreat.' },
-  
-  // Audio
-  { id: 10, type: 'audio', category: 'Khotbah', title: 'Pentingnya Integritas Pelayan Tuhan', url: '#', desc: 'Pdt. Dr. Yance Kogoya, M.Th - Ibadah Senin' },
-  { id: 11, type: 'audio', category: 'Renungan', title: 'Misi di Era Digital', url: '#', desc: 'Dr. Sarah Wenda - Renungan Pagi' },
-  { id: 12, type: 'audio', category: 'Podcast', title: 'Podcast Mahasiswa: Teologi & Budaya', url: '#', desc: 'Diskusi BEM STT WPJ Episode 1' },
-];
 
 export const Gallery: React.FC = () => {
   const [activeTab, setActiveTab] = useState<MediaType>('all');
@@ -80,7 +52,7 @@ export const Gallery: React.FC = () => {
         {/* Gallery Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredData.map((item) => (
-              <div key={item.id} className="group bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300">
+              <Link to={`/profil/galeri/${item.id}`} key={item.id} className="group bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 block">
                 
                 {/* Image Layout */}
                 {item.type === 'image' && (
@@ -90,10 +62,13 @@ export const Gallery: React.FC = () => {
                        <div className="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded text-xs font-bold text-gray-800 shadow-sm">
                           {item.category}
                        </div>
+                       <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                          <span className="text-white flex items-center gap-2 font-bold"><Eye size={20} /> Lihat Detail</span>
+                       </div>
                     </div>
                     <div className="p-6">
-                        <h3 className="font-bold text-lg text-gray-900 mb-2 font-serif">{item.title}</h3>
-                        <p className="text-sm text-gray-600">{item.desc}</p>
+                        <h3 className="font-bold text-lg text-gray-900 mb-2 font-serif group-hover:text-primary transition-colors">{item.title}</h3>
+                        <p className="text-sm text-gray-600 line-clamp-2">{item.desc}</p>
                     </div>
                   </>
                 )}
@@ -101,25 +76,18 @@ export const Gallery: React.FC = () => {
                 {/* Video Layout */}
                 {item.type === 'video' && (
                   <>
-                    <div className="relative h-64 bg-black">
-                       <iframe 
-                         width="100%" 
-                         height="100%" 
-                         src={item.url} 
-                         title={item.title} 
-                         frameBorder="0" 
-                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                         allowFullScreen
-                         className="w-full h-full"
-                       ></iframe>
+                    <div className="relative h-64 bg-black overflow-hidden">
+                       <img src={item.thumbnail || item.url} alt={item.title} className="w-full h-full object-cover opacity-80" />
+                       <div className="absolute inset-0 flex items-center justify-center">
+                            <div className="bg-red-600 text-white p-4 rounded-full shadow-lg group-hover:scale-110 transition-transform">
+                                <Play size={24} fill="currentColor" />
+                            </div>
+                       </div>
                     </div>
                     <div className="p-6 relative">
-                         <div className="absolute -top-6 right-6 bg-red-600 text-white p-3 rounded-full shadow-lg">
-                            <Play size={20} fill="currentColor" />
-                         </div>
                         <div className="text-xs font-bold text-red-600 uppercase mb-1">{item.category}</div>
-                        <h3 className="font-bold text-lg text-gray-900 mb-2 font-serif">{item.title}</h3>
-                        <p className="text-sm text-gray-600">{item.desc}</p>
+                        <h3 className="font-bold text-lg text-gray-900 mb-2 font-serif group-hover:text-primary transition-colors">{item.title}</h3>
+                        <p className="text-sm text-gray-600 line-clamp-2">{item.desc}</p>
                     </div>
                   </>
                 )}
@@ -127,32 +95,29 @@ export const Gallery: React.FC = () => {
                  {/* Audio Layout */}
                 {item.type === 'audio' && (
                   <div className="p-6 flex flex-col h-full relative">
-                      <div className="absolute top-0 left-0 w-full h-2 bg-accent"></div>
+                      <div className="absolute top-0 left-0 w-full h-2 bg-accent group-hover:h-3 transition-all"></div>
                       <div className="flex items-start gap-4 mb-6">
-                          <div className="bg-gray-100 p-4 rounded-xl text-primary">
+                          <div className="bg-gray-100 p-4 rounded-xl text-primary group-hover:bg-primary group-hover:text-white transition-colors">
                              <Mic size={32} />
                           </div>
                           <div>
                               <div className="text-xs font-bold text-accent uppercase mb-1">{item.category}</div>
-                              <h3 className="font-bold text-lg text-gray-900 font-serif leading-tight">{item.title}</h3>
+                              <h3 className="font-bold text-lg text-gray-900 font-serif leading-tight group-hover:text-primary transition-colors">{item.title}</h3>
                           </div>
                       </div>
-                      <p className="text-sm text-gray-600 mb-6 flex-grow">{item.desc}</p>
+                      <p className="text-sm text-gray-600 mb-6 flex-grow line-clamp-3">{item.desc}</p>
                       
-                      <div className="bg-gray-50 p-3 rounded-lg border border-gray-200 mt-auto">
+                      <div className="bg-gray-50 p-3 rounded-lg border border-gray-200 mt-auto group-hover:bg-gray-100 transition-colors">
                          <div className="flex items-center gap-3">
-                            <button className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white flex-shrink-0 hover:bg-blue-800 transition-colors">
+                            <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white flex-shrink-0">
                                 <Play size={12} fill="currentColor" />
-                            </button>
-                            <div className="h-1 bg-gray-300 w-full rounded-full overflow-hidden">
-                                <div className="h-full bg-accent w-1/3"></div>
                             </div>
-                            <span className="text-xs font-mono text-gray-500">14:20</span>
+                            <span className="text-xs font-bold text-gray-600">Dengarkan Audio</span>
                          </div>
                       </div>
                   </div>
                 )}
-              </div>
+              </Link>
             ))}
         </div>
 

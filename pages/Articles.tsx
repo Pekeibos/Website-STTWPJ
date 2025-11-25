@@ -1,26 +1,11 @@
+
 import React from 'react';
 import { Section, NewsCard } from '../components/UI';
-
-const articles = [
-  {
-    id: 1,
-    title: "Relevansi Teologi Reformed di Abad 21",
-    date: "10 Agustus 2024",
-    category: "Teologi",
-    image: "https://picsum.photos/seed/book/600/400",
-    desc: "Sebuah tinjauan teologis mengenai pentingnya kembali kepada dasar-dasar iman Kristen di tengah gempuran postmodernisme."
-  },
-  {
-    id: 2,
-    title: "Pendidikan Kristen dalam Era Digital",
-    date: "22 Juli 2024",
-    category: "Pendidikan",
-    image: "https://picsum.photos/seed/tech/600/400",
-    desc: "Tantangan dan peluang bagi pendidik Kristen untuk memanfaatkan teknologi dalam pengajaran iman."
-  },
-];
+import { newsData } from '../data/news';
 
 export const Articles: React.FC = () => {
+  const articles = newsData.filter(n => n.category.includes('Artikel') || n.category === 'Teologi' || n.category === 'Pendidikan');
+
   return (
     <>
       <div className="bg-primary text-white py-20 text-center">
@@ -38,8 +23,8 @@ export const Articles: React.FC = () => {
                date={item.date}
                category={item.category}
                image={item.image}
-               description={item.desc}
-               link="#"
+               description={item.excerpt}
+               link={`/berita/${item.id}`}
              />
           ))}
         </div>

@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import { Layout } from './components/Layout';
@@ -10,7 +11,8 @@ import { ProfileVision } from './pages/ProfileVision';
 import { ProfileValues } from './pages/ProfileValues';
 import { ProfileAccreditation } from './pages/ProfileAccreditation';
 import { ProfileStructure } from './pages/ProfileStructure';
-import { Gallery } from './pages/Gallery'; // New Import
+import { Gallery } from './pages/Gallery';
+import { GalleryDetail } from './pages/GalleryDetail'; // New Import
 
 // Prodi Pages
 import { ProdiS1Teologi } from './pages/ProdiS1Teologi';
@@ -41,6 +43,7 @@ import { EJournal } from './pages/EJournal';
 import { NewsList } from './pages/NewsList';
 import { Articles } from './pages/Articles';
 import { Information } from './pages/Information';
+import { NewsDetail } from './pages/NewsDetail'; // New Import
 
 function App() {
   return (
@@ -55,7 +58,8 @@ function App() {
           <Route path="/profil/nilai" element={<ProfileValues />} />
           <Route path="/profil/akreditasi" element={<ProfileAccreditation />} />
           <Route path="/profil/struktur" element={<ProfileStructure />} />
-          <Route path="/profil/galeri" element={<Gallery />} /> {/* New Route */}
+          <Route path="/profil/galeri" element={<Gallery />} />
+          <Route path="/profil/galeri/:id" element={<GalleryDetail />} /> {/* New Route */}
 
           {/* Program Studi Routes */}
           <Route path="/program-studi/s1-teologi" element={<ProdiS1Teologi />} />
@@ -86,6 +90,7 @@ function App() {
           <Route path="/berita/terkini" element={<NewsList />} />
           <Route path="/berita/artikel" element={<Articles />} />
           <Route path="/berita/informasi" element={<Information />} />
+          <Route path="/berita/:id" element={<NewsDetail />} /> {/* New Route for all news types */}
           
           <Route path="/kontak" element={<Contact />} />
           

@@ -1,26 +1,11 @@
+
 import React from 'react';
 import { Section, NewsCard } from '../components/UI';
-
-const infoItems = [
-  {
-    id: 1,
-    title: "Kalender Akademik 2024/2025",
-    date: "01 Juli 2024",
-    category: "Pengumuman",
-    image: "https://picsum.photos/seed/cal/600/400",
-    desc: "Jadwal lengkap kegiatan akademik semester ganjil dan genap tahun ajaran 2024/2025."
-  },
-  {
-    id: 2,
-    title: "Jadwal Ujian Akhir Semester Ganjil",
-    date: "15 November 2024",
-    category: "Pengumuman",
-    image: "https://picsum.photos/seed/exam/600/400",
-    desc: "Informasi jadwal UAS bagi mahasiswa tingkat I - IV. Harap memperhatikan syarat administrasi."
-  },
-];
+import { newsData } from '../data/news';
 
 export const Information: React.FC = () => {
+  const infoItems = newsData.filter(n => n.category === 'Informasi' || n.category === 'Pengumuman');
+
   return (
     <>
       <div className="bg-primary text-white py-20 text-center">
@@ -38,8 +23,8 @@ export const Information: React.FC = () => {
                date={item.date}
                category={item.category}
                image={item.image}
-               description={item.desc}
-               link="#"
+               description={item.excerpt}
+               link={`/berita/${item.id}`}
              />
           ))}
         </div>
