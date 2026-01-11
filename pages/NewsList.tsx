@@ -6,18 +6,24 @@ import { newsData } from '../data/news';
 
 export const NewsList: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState("Semua");
-  const categories = ["Semua", "Kampus", "Seminar", "Akademik", "Studi Banding"];
+  const categories = ["Semua", "Kampus", "Seminar", "Teologi", "Pendidikan", "Informasi", "Studi Banding"];
 
   const filteredNews = activeCategory === "Semua" 
-    ? newsData.filter(n => ["Kampus", "Seminar", "Akademik", "Studi Banding"].includes(n.category)) // Simple filter for "News" type
-    : newsData.filter(item => item.category === activeCategory);
+    ? newsData 
+    : newsData.filter(item => {
+        // Handle mapping if necessary, or ensure data matches categories exactly. 
+        // Here we map "Artikel Teologi" to "Teologi" etc if exact match fails
+        if (activeCategory === "Teologi" && item.category === "Artikel Teologi") return true;
+        if (activeCategory === "Pendidikan" && item.category === "Artikel Pendidikan") return true;
+        return item.category === activeCategory;
+    });
 
   return (
     <>
       <div className="bg-primary dark:bg-gray-900 text-white py-20 text-center transition-colors duration-300">
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl font-serif font-bold mb-4">Berita Terkini</h1>
-          <p className="text-xl text-blue-200">Kabar terbaru dari kampus STT Walter Post Jayapura</p>
+          <h1 className="text-4xl md:text-5xl font-serif font-bold mb-4">Berita & Kegiatan</h1>
+          <p className="text-xl text-blue-200">Kabar terbaru, artikel, dan informasi akademik STT Walter Post Jayapura</p>
         </div>
       </div>
       <Section className="bg-white dark:bg-gray-950 transition-colors duration-300">
@@ -61,6 +67,12 @@ export const NewsList: React.FC = () => {
           ) : (
             <div className="col-span-full text-center py-12 text-gray-500 dark:text-gray-400">
                 <p className="text-lg">Tidak ada berita ditemukan untuk kategori ini.</p>
+                <button 
+                    onClick={() => setActiveCategory("Semua")}
+                    className="mt-4 text-primary dark:text-blue-400 font-bold hover:underline"
+                >
+                    Lihat Semua Berita
+                </button>
             </div>
           )}
         </div>

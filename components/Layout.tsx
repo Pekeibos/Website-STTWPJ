@@ -176,8 +176,8 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
 
       {/* Smooth Page Load Overlay */}
       <div 
-        className={`fixed inset-0 z-[100] flex flex-col items-center justify-center bg-white dark:bg-gray-950 transition-all duration-500 ease-in-out pointer-events-none ${
-            isLoading ? 'opacity-100' : 'opacity-0'
+        className={`fixed inset-0 z-[100] flex flex-col items-center justify-center bg-white dark:bg-gray-950 transition-opacity duration-500 ease-in-out ${
+            isLoading ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
         }`}
       >
         <div className={`transform transition-all duration-500 ${isLoading ? 'scale-100 translate-y-0' : 'scale-90 translate-y-4'}`}>

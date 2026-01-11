@@ -57,7 +57,7 @@ export const newsData: NewsDetail[] = [
     id: 3,
     title: "Menjawab Tantangan Postmodernisme: Relevansi Teologi Reformed di Abad 21",
     date: "10 Agustus 2024",
-    category: "Artikel Teologi",
+    category: "Teologi",
     image: "https://picsum.photos/seed/book/800/500",
     excerpt: "Sebuah tinjauan teologis mengenai pentingnya kembali kepada dasar-dasar iman Kristen di tengah gempuran postmodernisme.",
     content: `
@@ -112,7 +112,7 @@ export const newsData: NewsDetail[] = [
     id: 5,
     title: "Pendaftaran Mahasiswa Baru Gelombang II Dibuka: Siapkan Diri Menjadi Pemimpin Masa Depan",
     date: "20 September 2024",
-    category: "Akademik",
+    category: "Informasi",
     image: "https://picsum.photos/seed/students/800/500",
     excerpt: "Pendaftaran gelombang kedua telah dibuka. Segera daftarkan diri Anda sebelum kuota terpenuhi.",
     content: `
@@ -127,7 +127,7 @@ export const newsData: NewsDetail[] = [
     id: 6,
     title: "Pendidikan Kristen dalam Era Digital: Peluang & Tantangan",
     date: "22 Juli 2024",
-    category: "Artikel Pendidikan",
+    category: "Pendidikan",
     image: "https://picsum.photos/seed/tech/800/500",
     excerpt: "Tantangan dan peluang bagi pendidik Kristen untuk memanfaatkan teknologi dalam pengajaran iman.",
     content: `
@@ -157,5 +157,19 @@ export const newsData: NewsDetail[] = [
     `,
     author: "BAA",
     tags: ["Ujian", "Akademik"]
+  },
+  {
+    id: 8,
+    title: "Kunjungan Studi Banding ke STT Jakarta",
+    date: "01 Oktober 2024",
+    category: "Studi Banding",
+    image: "https://picsum.photos/seed/study/800/500",
+    excerpt: "Meningkatkan kualitas akademik melalui pertukaran pengetahuan antar institusi.",
+    content: `
+      <p>Tim dosen dan pimpinan STT Walter Post Jayapura melakukan kunjungan studi banding ke Sekolah Tinggi Filsafat Theologi (STFT) Jakarta. Kunjungan ini bertujuan untuk mempelajari sistem penjaminan mutu dan pengelolaan perpustakaan digital.</p>
+      <p>Kerjasama antar institusi teologi sangat penting untuk memajukan pendidikan teologi di Indonesia, khususnya dalam menghadapi tantangan era disrupsi.</p>
+    `,
+    author: "Humas STT WPJ",
+    tags: ["Studi Banding", "Kerjasama"]
   }
 ];
