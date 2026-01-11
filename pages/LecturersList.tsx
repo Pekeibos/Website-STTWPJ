@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Section, Button } from '../components/UI';
 import { Mail, Linkedin, Filter, Search, ArrowRight, BookOpen } from 'lucide-react';
@@ -78,7 +79,7 @@ export const LecturersList: React.FC = () => {
         {filteredLecturers.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {filteredLecturers.map((lecturer) => (
-                  <div key={lecturer.id} className="group bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-100 dark:border-gray-800 flex flex-col h-full transform hover:-translate-y-2 cursor-pointer relative">
+                  <div key={lecturer.id} className="group bg-white dark:bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-700 border border-gray-100 dark:border-gray-800 flex flex-col h-full transform hover:-translate-y-2 cursor-pointer relative">
                     
                     {/* Link wrapping the whole card */}
                     <Link to={`/dosen/${lecturer.id}`} className="absolute inset-0 z-0"></Link>
@@ -92,7 +93,7 @@ export const LecturersList: React.FC = () => {
                         />
                         
                         {/* Overlay Gradient on Hover */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6 z-10 pointer-events-none">
+                        <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6 z-10 pointer-events-none">
                             <div className="flex justify-center gap-4 mb-4 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-100 pointer-events-auto">
                                 <a 
                                   href={`mailto:${lecturer.email}`} 

@@ -10,7 +10,7 @@ export interface NewsDetail extends NewsItem {
 export const newsData: NewsDetail[] = [
   {
     id: 1,
-    title: "Ibadah Pembukaan Semester Ganjil 2024",
+    title: "Sukacita Ibadah Pembukaan Semester Ganjil TA 2024/2025: Mengawali Perkuliahan dengan Iman",
     date: "12 Agustus 2024",
     category: "Kampus",
     image: "https://picsum.photos/seed/worship/800/500",
@@ -31,7 +31,7 @@ export const newsData: NewsDetail[] = [
   },
   {
     id: 2,
-    title: "Seminar Misi: Injil di Tanah Papua",
+    title: "Seminar Misi Internasional: Strategi Kontekstualisasi Injil di Tanah Papua Era 5.0",
     date: "05 September 2024",
     category: "Seminar",
     image: "https://picsum.photos/seed/seminar/800/500",
@@ -55,7 +55,7 @@ export const newsData: NewsDetail[] = [
   },
   {
     id: 3,
-    title: "Relevansi Teologi Reformed di Abad 21",
+    title: "Menjawab Tantangan Postmodernisme: Relevansi Teologi Reformed di Abad 21",
     date: "10 Agustus 2024",
     category: "Artikel Teologi",
     image: "https://picsum.photos/seed/book/800/500",
@@ -79,7 +79,7 @@ export const newsData: NewsDetail[] = [
   },
   {
     id: 4,
-    title: "Kalender Akademik 2024/2025",
+    title: "Resmi Dirilis: Kalender Akademik STT Walter Post Jayapura Tahun Ajaran 2024/2025",
     date: "01 Juli 2024",
     category: "Informasi",
     image: "https://picsum.photos/seed/cal/800/500",
@@ -110,7 +110,7 @@ export const newsData: NewsDetail[] = [
   },
    {
     id: 5,
-    title: "Penerimaan Mahasiswa Baru Gelombang II",
+    title: "Pendaftaran Mahasiswa Baru Gelombang II Dibuka: Siapkan Diri Menjadi Pemimpin Masa Depan",
     date: "20 September 2024",
     category: "Akademik",
     image: "https://picsum.photos/seed/students/800/500",
@@ -125,7 +125,7 @@ export const newsData: NewsDetail[] = [
   },
   {
     id: 6,
-    title: "Pendidikan Kristen dalam Era Digital",
+    title: "Pendidikan Kristen dalam Era Digital: Peluang & Tantangan",
     date: "22 Juli 2024",
     category: "Artikel Pendidikan",
     image: "https://picsum.photos/seed/tech/800/500",
@@ -140,7 +140,7 @@ export const newsData: NewsDetail[] = [
   },
     {
     id: 7,
-    title: "Jadwal Ujian Akhir Semester Ganjil",
+    title: "Pengumuman Penting: Jadwal Lengkap & Syarat Ujian Akhir Semester Ganjil",
     date: "15 November 2024",
     category: "Informasi",
     image: "https://picsum.photos/seed/exam/800/500",

@@ -14,16 +14,16 @@ export const NewsList: React.FC = () => {
 
   return (
     <>
-      <div className="bg-primary text-white py-20 text-center">
+      <div className="bg-primary dark:bg-gray-900 text-white py-20 text-center transition-colors duration-300">
         <div className="container mx-auto px-4">
           <h1 className="text-4xl md:text-5xl font-serif font-bold mb-4">Berita Terkini</h1>
           <p className="text-xl text-blue-200">Kabar terbaru dari kampus STT Walter Post Jayapura</p>
         </div>
       </div>
-      <Section>
+      <Section className="bg-white dark:bg-gray-950 transition-colors duration-300">
         {/* Filter Section */}
         <div className="flex flex-col md:flex-row justify-center items-center gap-4 mb-12">
-            <div className="flex items-center gap-2 text-gray-600 font-bold mr-2 mb-2 md:mb-0">
+            <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400 font-bold mr-2 mb-2 md:mb-0">
                 <Filter size={20} /> Filter Kategori:
             </div>
             {/* Scrollable container for mobile responsiveness */}
@@ -32,10 +32,10 @@ export const NewsList: React.FC = () => {
                     <button
                         key={cat}
                         onClick={() => setActiveCategory(cat)}
-                        className={`whitespace-nowrap px-4 py-2 rounded-full text-sm font-semibold transition-all duration-300 flex-shrink-0 ${
+                        className={`whitespace-nowrap px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 flex-shrink-0 ${
                             activeCategory === cat 
                             ? "bg-primary text-white shadow-md transform scale-105" 
-                            : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                            : "bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 hover:text-primary dark:hover:text-blue-400"
                         }`}
                     >
                         {cat}
@@ -59,7 +59,7 @@ export const NewsList: React.FC = () => {
                 />
             ))
           ) : (
-            <div className="col-span-full text-center py-12 text-gray-500">
+            <div className="col-span-full text-center py-12 text-gray-500 dark:text-gray-400">
                 <p className="text-lg">Tidak ada berita ditemukan untuk kategori ini.</p>
             </div>
           )}

@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone, Mail, Facebook, Instagram, Youtube, Twitter, ChevronDown, ChevronUp, Search, Moon, Sun, MapPin } from 'lucide-react';
@@ -199,10 +200,10 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
             <Link to="/layanan/siakad" className="hover:text-accent transition-colors">SiAkad</Link>
             <Link to="/layanan/elearning" className="hover:text-accent transition-colors">E-Learning</Link>
             <div className="flex items-center space-x-3 border-l border-blue-700 pl-4 ml-2">
-              <a href="https://facebook.com" className="text-blue-200 hover:text-[#1877F2] transition-colors"><Facebook size={16} /></a>
-              <a href="https://instagram.com" className="text-blue-200 hover:text-[#E4405F] transition-colors"><Instagram size={16} /></a>
-              <a href="https://youtube.com" className="text-blue-200 hover:text-[#FF0000] transition-colors"><Youtube size={16} /></a>
-              <a href="https://twitter.com" className="text-blue-200 hover:text-[#1DA1F2] transition-colors"><Twitter size={16} /></a>
+              <a href="https://facebook.com/sttwpj" target="_blank" rel="noopener noreferrer" className="text-blue-200 hover:text-[#1877F2] transition-colors" aria-label="Facebook"><Facebook size={16} /></a>
+              <a href="https://instagram.com/sttwpj" target="_blank" rel="noopener noreferrer" className="text-blue-200 hover:text-[#E4405F] transition-colors" aria-label="Instagram"><Instagram size={16} /></a>
+              <a href="https://youtube.com/sttwpj" target="_blank" rel="noopener noreferrer" className="text-blue-200 hover:text-[#FF0000] transition-colors" aria-label="YouTube"><Youtube size={16} /></a>
+              <a href="https://twitter.com/sttwpj" target="_blank" rel="noopener noreferrer" className="text-blue-200 hover:text-[#1DA1F2] transition-colors" aria-label="Twitter"><Twitter size={16} /></a>
             </div>
           </div>
         </div>
@@ -413,19 +414,19 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
               
               {/* Visually Distinct Social Icons */}
               <div className="flex space-x-3 pt-4">
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" 
+                <a href="https://facebook.com/sttwpj" target="_blank" rel="noopener noreferrer" 
                    className="bg-blue-600 text-white p-2.5 rounded-full hover:bg-blue-700 shadow-md transform hover:scale-110 transition-all duration-300" aria-label="Facebook">
                     <Facebook size={18} fill="currentColor" />
                 </a>
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" 
+                <a href="https://twitter.com/sttwpj" target="_blank" rel="noopener noreferrer" 
                    className="bg-sky-500 text-white p-2.5 rounded-full hover:bg-sky-600 shadow-md transform hover:scale-110 transition-all duration-300" aria-label="Twitter">
                     <Twitter size={18} fill="currentColor" />
                 </a>
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" 
+                <a href="https://instagram.com/sttwpj" target="_blank" rel="noopener noreferrer" 
                    className="bg-pink-600 text-white p-2.5 rounded-full hover:bg-pink-700 shadow-md transform hover:scale-110 transition-all duration-300" aria-label="Instagram">
                     <Instagram size={18} />
                 </a>
-                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" 
+                <a href="https://youtube.com/sttwpj" target="_blank" rel="noopener noreferrer" 
                    className="bg-red-600 text-white p-2.5 rounded-full hover:bg-red-700 shadow-md transform hover:scale-110 transition-all duration-300" aria-label="YouTube">
                     <Youtube size={18} fill="currentColor" />
                 </a>
