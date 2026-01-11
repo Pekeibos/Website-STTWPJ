@@ -28,7 +28,7 @@ export const LecturerDetail: React.FC = () => {
           <div className="flex flex-col md:flex-row items-center md:items-end gap-8 md:gap-12">
              {/* Profile Image with Ring */}
              <div className="relative shrink-0">
-                <div className="w-40 h-40 md:w-56 md:h-56 rounded-full border-[6px] border-white dark:border-gray-800 shadow-2xl overflow-hidden bg-gray-800 relative z-10">
+                <div className="w-40 h-50 md:w-56 md:h-64 rounded-xl border-[6px] border-white dark:border-gray-800 shadow-2xl overflow-hidden bg-gray-800 relative z-10">
                    <img src={lecturer.image} alt={lecturer.name} className="w-full h-full object-cover" />
                 </div>
                 {/* Decorative Elements */}

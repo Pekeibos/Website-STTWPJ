@@ -9,10 +9,17 @@ export const LecturersList: React.FC = () => {
   const [filterProdi, setFilterProdi] = useState('Semua');
   const [searchQuery, setSearchQuery] = useState('');
 
-  const prodiList = ['Semua', 'S1 Teologi', 'S1 PAK', 'S2 Teologi'];
+  const prodiList = ['Semua', 'S1 Teologi', 'S1 PAK', 'S2 Teologi', 'S2 Magister Teologi'];
 
   const filteredLecturers = lecturersData.filter(lecturer => {
-    const matchesProdi = filterProdi === 'Semua' || lecturer.prodi === filterProdi;
+    // Mapping for consistent filtering if data uses slightly different names
+    const lecturerProdi = lecturer.prodi;
+    
+    // Logic to handle "S2 Magister Teologi" covering "S2 Teologi" or exact matches
+    const matchesProdi = filterProdi === 'Semua' || 
+                         lecturerProdi === filterProdi || 
+                         (filterProdi === 'S2 Magister Teologi' && lecturerProdi === 'S2 Teologi');
+
     const matchesSearch = lecturer.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
                           lecturer.expertise.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesProdi && matchesSearch;
